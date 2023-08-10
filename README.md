@@ -32,8 +32,8 @@ After opening the project, Unity should automatically resolve and download the r
 - Double-click on the main `.unity` scene file to open it.
 - Press the play button to test the project.
 
-Contributing
-Provide guidelines here if others can contribute to your project. For example:
+## Contributing
+
 - Fork the repository.
 - Create a new branch for your features or fixes.
 - Commit your changes with meaningful commit messages.
