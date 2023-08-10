@@ -1,32 +1,36 @@
-BitBeat
-Welcome to the repository for BitBeat! This is a Unity project focused on VR applications to test input methods and possibly audio outputs and their effects on educational settings.
+# BitBeat
 
-Prerequisites
+Welcome to the BitBeat repository! BitBeat is a VR application designed to explore the impact of input methods and audio output on educational settings.
 
-- Unity: Ensure you have Unity installed, preferably version 2022.3.5f1. You can download it from the Unity Hub (https://unity3d.com/get-unity/download).
+## Prerequisites
 
-Getting Started
+- **Unity Version**: Ensure you have Unity 2022.3.5f1 installed. If not, download and install it from the [Unity Hub](https://unity3d.com/get-unity/download) or the official Unity website.
 
-1. Clone the Repository
-git clone [repo-url]
-Replace [repo-url] with the actual URL of this repository.
+## Setup Instructions
 
-2. Open the Project in Unity
-- Using Unity Hub:
-  - Click Add.
-  - Navigate to the cloned repo's directory (the one containing Assets, ProjectSettings, etc.).
-  - Click on the project's name to open it.
-  
-- Or Directly in Unity:
+1. **Clone the Repository**: 
+   Use the following command to clone this repository:
+   ```git clone [repository-url]```
+   Replace `[repository-url]` with the actual URL of your BitBeat repository.
+   
+2. **Open the Project in Unity**:
+- If you're using **Unity Hub**: 
+  - Launch Unity Hub.
+  - Click on the 'Add' button.
+  - Navigate to the directory where you cloned the repository.
+  - Click on the BitBeat project to open it.
+- If you're opening **Directly from Unity**:
   - Launch Unity.
-  - Select Open Project and choose the repository directory.
+  - Choose 'Open Project'.
+  - Navigate to the directory where you cloned the repository and select it.
 
-3. Dependencies
-Unity should automatically resolve and install the necessary packages from the manifest.json file in the Packages directory. If there are additional assets or plugins, you might need to link or install them manually.
+3. **Resolve Dependencies**:
+After opening the project, Unity should automatically resolve and download the required packages based on the `manifest.json` in the Packages directory. If there are any issues, please ensure you're connected to the internet and try restarting Unity.
 
-4. Open & Test the Project
-- Navigate to the Assets directory inside Unity and double-click on a .unity scene file to open it.
-- To test or run the game/project: Go to File > Build Settings, add your scenes, select the target platform, and then click Build & Run.
+4. **Open and Test the Main Scene**:
+- Navigate to the `Assets` directory in the Unity Editor.
+- Double-click on the main `.unity` scene file to open it.
+- Press the play button to test the project.
 
 Contributing
 Provide guidelines here if others can contribute to your project. For example:
