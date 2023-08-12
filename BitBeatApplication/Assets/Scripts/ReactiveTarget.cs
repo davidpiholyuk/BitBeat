@@ -5,6 +5,7 @@ using UnityEngine;
 public class ReactiveTarget : MonoBehaviour
 {
     private CubeController cubeController;
+    public GameController gameController;
 
     private void Start()
     {
@@ -13,12 +14,13 @@ public class ReactiveTarget : MonoBehaviour
 
     public void ReactToHit()
     {
-        StartCoroutine(Die());
+        StartCoroutine(ChangeText());
     }
 
-    private IEnumerator Die()
+    private IEnumerator ChangeText()
     {
         cubeController.SetText();
+        gameController.CubeValuesChanged();
         yield return null;
     }
 }
