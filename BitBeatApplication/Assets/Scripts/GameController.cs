@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 public class GameController : MonoBehaviour
@@ -57,7 +58,10 @@ public class GameController : MonoBehaviour
     }
 
     void Update() {
-        timeRemaining = totalTime - (DateTime.Now - startTime).Seconds;
+        timeRemaining = totalTime - (int)(DateTime.Now - startTime).TotalSeconds;
+        if(timeRemaining <= -1){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
         UpdateUI();
     }
 
