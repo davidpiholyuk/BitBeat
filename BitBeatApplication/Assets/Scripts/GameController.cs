@@ -31,10 +31,11 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        displayUI.SetActive(false);
-        playButton.onClick.AddListener(StartGame);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        // displayUI.SetActive(false);
+        // playButton.onClick.AddListener(StartGame);
+        // Cursor.lockState = CursorLockMode.None;
+        // Cursor.visible = true;
+        StartGame();
     }
 
     void StartGame()
