@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Random = System.Random;
 
 public class GameController : MonoBehaviour
@@ -19,15 +20,22 @@ public class GameController : MonoBehaviour
     private List<GameObject> cubes= new List<GameObject>();
     private int currNum;
     private int score;
+    private int timeRemaining;
+    private int currentNumberNumber;
+    public int totalTime;
     public TextMeshPro scoreText;
     public TextMeshPro numberText;
+    public TextMeshPro timerText;
+    public TextMeshPro currentNumber;
+    public DateTime startTime; 
 
     void Start()
     {
-        displayUI.SetActive(false);
-        playButton.onClick.AddListener(StartGame);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        // displayUI.SetActive(false);
+        // playButton.onClick.AddListener(StartGame);
+        // Cursor.lockState = CursorLockMode.None;
+        // Cursor.visible = true;
+        StartGame();
     }
 
     void StartGame()
@@ -44,8 +52,18 @@ public class GameController : MonoBehaviour
         Random rand = new Random();
         currNum = rand.Next(0, (int)Mathf.Pow(2, cubes.Count));
 
+        startTime = DateTime.Now;
+
         UpdateUI();
         displayUI.SetActive(true);
+    }
+
+    void Update() {
+        timeRemaining = totalTime - (int)(DateTime.Now - startTime).TotalSeconds;
+        if(timeRemaining <= -1){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        UpdateUI();
     }
 
     void GenerateCubes(int numberOfCubes)
@@ -62,19 +80,21 @@ public class GameController : MonoBehaviour
             cubeScript.gameController = this;
             cubes.Add(newCube);
         }
+        ResetCubes();
     }
 
     public void CubeValuesChanged()
     {
         int newValue = GetCubesValue();
+        currentNumberNumber = newValue;
         if (newValue == currNum)
         {
             score++;
             Random rand = new Random();
             currNum = rand.Next(0, (int)Mathf.Pow(2, cubes.Count));
-            ResetCubes();
-            UpdateUI();
         }
+        UpdateUI();
+
     }
 
     int GetCubesValue()
@@ -99,6 +119,8 @@ public class GameController : MonoBehaviour
     {
         scoreText.text = "Score: " + score.ToString();
         numberText.text = "Convert to Binary: " + currNum.ToString();
+        timerText.text = "Time: " + timeRemaining.ToString();
+        currentNumber.text = "Current Number: " + currentNumberNumber.ToString();
     }
 
     void ResetCubes()
@@ -109,6 +131,8 @@ public class GameController : MonoBehaviour
             if (cube.GetComponentInChildren<TextMeshPro>().text.Equals("1"))
             {
                 CubeController cubeController = cube.GetComponent<CubeController>();
+                cubeController.setGuideText((128/Math.Pow(2,i)));
+
                 cubeController.SetText();
             } 
         }

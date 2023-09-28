@@ -3,12 +3,19 @@ using TMPro;
 
 public class CubeController : MonoBehaviour
 {
+    
+
     public TextMeshPro childTextMeshPro;
+    public TextMeshPro guideText;
 
     void Start()
     {
         // Set the initial text
         SetText();
+    }
+
+    public void setGuideText(double id){
+        guideText.text = id.ToString();
     }
 
     public void SetText()
